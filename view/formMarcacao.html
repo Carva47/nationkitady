@@ -1,0 +1,58 @@
+
+   <section  class="py-5 mt-5">
+    <div class="container py-4 py-xl-5" style="padding-bottom: 0px;margin-bottom: -24px;">
+        <div class="col" style="margin-top: 0px;margin-bottom: 0px;">
+            <h2 class="d-flex d-xxl-flex justify-content-center align-items-center justify-content-xxl-center align-items-xxl-center" style="color: rgb(112,63,36);">Marcação</h2>
+            <p class="d-flex d-xxl-flex justify-content-center align-items-center justify-content-xxl-center align-items-xxl-center w-lg-50" style="color: rgb(112,63,36);">Preencha os campos a baixos com muita atenção para a marcação ou agendamento do seu evento.</p>
+        </div>
+        <div class="row mb-5" style="margin-left: 0px;margin-right: 0px;">
+            <div class="col">
+                <form  class="p-3 p-xl-4" action="controller/insert.php" method="post"><label class="form-label text-start" style="font-weight: bold;text-align: left;color: rgb(112,63,36);">INFORMAÇÃO SOBRE EVENTOS</label>
+                    <div class="mb-3"><select name="tipo_evento" onchange="evento();" id="tpe" class="form-select" style="border-color: rgb(112,63,36);">
+                            <optgroup  label="Tipo de Evento">
+                                <option selected="" hidden="true" >Tipo de Evento</option>
+                                <option value="CASAMENTO">CASAMENTO</option>
+                                <option value="NOIVADO">NOIVADO</option>
+                                <option value="GRADUAÇÃO">GRADUAÇÃO</option>
+                                <option value="SESSÃO GESTANTE">SESSÃO GESTANTE</option>
+                                <option value="SESSÃO INFANTIL">SESSÃO INFANTIL</option>
+                                <option value="SESSÃO ADULTO">SESSÃO ADULTO</option>
+                                <option value="ANIVERSÁRIO">ANIVERSÁRIO</option>
+                            </optgroup>
+                        </select></div>
+
+                        <div  class="mb-3"><select name="packcasamento" id="packcasamento"  class="form-select" style="border-color: rgb(112,63,36);">
+                            <optgroup  label="">
+                                <option selected="" hidden="true" >PACOTES</option>
+                                <option value="">PACK 2 - 80 FOTOS - 89.200KZ</option>
+                                <option value="">PCOTE FLEX - 150 FOTOS - 159.000KZ</option>
+                                <option value="">PCOTE FLEX - 50 FOTOS - 239.600KZ</option>
+                            </optgroup>
+                        </select></div>
+                        <div  class="mb-3"><select name="packnoivados" id="packnoivados"  class="form-select" style="border-color: rgb(112,63,36);">
+                            <optgroup  label="">
+                                <option selected="" hidden="true" >PACOTES</option>
+                                <option value="">PACK 2 </option>
+                                <option value="">PCOTE FLEX </option>
+                                <option value="">PCOTE FLEX </option>
+                            </optgroup>
+                        </select>
+                     </div>
+                     <div id="numFotos" style="margin-bottom: 20px;"><input name="numfotos" oninput="calcular();" id="NF" type="number" placeholder="Número de Fotos" style="margin-left: 0px; text-align: center;font-weight: bold; padding-left:1px;border-color: rgb(112,63,36);"><label id="ValorTotal" class="form-label text-start" style="margin-left: 15px; font-weight: bold;text-align: left;color: rgb(112,63,36);">VALOR A PAGAR EM </label> <label for=""> <p  style="font-weight: bold;">KZ</p></label></div> 
+
+                    <div class="text-start mb-3" style="padding-bottom: 0px;margin-bottom: 22px;margin-top: 6px;"><label class="form-label text-start" style="font-weight: bold;text-align: left;color: rgb(112,63,36);">Data do Evento:</label><input type="date" name="data_evento" id="dataevento" style="margin-left: 8px; font-weight: bold; text-align: center; padding-left: 1px;border-color: rgb(112,63,36);"></div>
+                    <div class="text-start mb-3" style="padding-bottom: 0px;margin-bottom: 22px;margin-top: 6px;"><label class="form-label text-start align-items-center" style="font-weight: bold;text-align: center;padding-left: 0px;margin-left: 0px;color: rgb(112,63,36);padding-right: 0px;margin-right: 0px;">Hora de Início:</label><input class="align-items-center" name="hora_evento" id="horaevento" type="time" style="font-weight: bold; border-color: rgb(112,63,36);padding-left: 13px;margin-left: 17px;"></div><label class="form-label text-start d-flex justify-content-start align-items-start" style="font-weight: bold;text-align: left;padding-left: 0px;margin-left: 0px;color: rgb(112,63,36);">Local do Evento:</label>
+                    <div class="mb-3"><input class="form-control" type="text" id="local" name="local_evento" placeholder="Província, Bairro, Rua..." style="border-color: rgb(112,63,36);"></div>
+                    <div class="mb-3"><label class="form-label text-start" style="font-weight: bold;text-align: left;color: rgb(112,63,36);">DADOS DO CLIENTE</label><input class="form-control" type="text" id="nome" required="" name="nome" placeholder="Name Completo" style="border-color: rgb(112,63,36);"></div>
+                    <div class="mb-3"><input class="form-control" type="text" id="bilhete" name="bilhete" placeholder="Nº Bilhete de Identidade" style="border-color: rgb(112,63,36);" minlength="14" maxlength="14" required=""></div>
+                    <div class="mb-3"><input class="form-control" type="email" id="email" name="email" placeholder="Email" style="border-color: rgb(112,63,36); " required=""></div>
+                    <div class="mb-3"><input class="form-control" type="tel" name="telemovel" id="telemovel" placeholder="Telemovel" style="border-color: rgb(112,63,36);" required="" minlength="9" maxlength="9"></div>
+                    <div class="mb-3"></div>
+                    <div class="mb-3"><input class="form-control" type="tel" name="whatsap" id="whatsap" placeholder="WhatsApp" style="border-color: rgb(112,63,36);" minlength="9" maxlength="9" required=""></div>
+                    <div><button id="CadCliente" name="CadCliente" class="btn btn-primary d-block w-100 " type="submit" style="background: rgb(112,63,36); border-radius: 12px;">Marcar</button></div>
+                </form>
+            </div>
+        </div><small class="form-text text-start d-flex flex-row justify-content-center align-content-center align-self-center" style="text-align: center;padding-left: 14px;">Entre em contactos a partir das nossas Redes Sociais e contactos telefónicos em caso de ajuda.</small>
+    </div>
+</section>
+ 
